@@ -53,10 +53,10 @@ public class ProfileService {
             tmp_profileDetail.setId_kab_kota(tmp_profile.getId_kab_kota());
             tmp_profileDetail.setSelected_courier(g_selectedCourierRepository.getSelectedCourier(id_seller));
 
-            l_output = new ResultEntity(tmp_profileDetail, ErrorCode.B000);
+            l_output = new ResultEntity(tmp_profileDetail, ErrorCode.BIT_000);
 
         }catch (Exception e){
-            l_output = new ResultEntity(e.toString(), ErrorCode.B999);
+            l_output = new ResultEntity(e.toString(), ErrorCode.BIT_999);
         }
 
         return l_output;
@@ -94,6 +94,6 @@ public class ProfileService {
             }
         }
 
-        return new ResultEntity("Y", ErrorCode.B000);
+        return new ResultEntity("Y", ErrorCode.BIT_000);
     }
 }
