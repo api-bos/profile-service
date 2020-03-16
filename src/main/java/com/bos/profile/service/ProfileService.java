@@ -2,6 +2,7 @@ package com.bos.profile.service;
 
 import bca.bit.proj.library.base.ResultEntity;
 import bca.bit.proj.library.enums.ErrorCode;
+import com.bos.profile.model.ChangePassword;
 import com.bos.profile.model.Profile;
 import com.bos.profile.model.ProfileDetail;
 import com.bos.profile.repository.ProfileRepository;
@@ -95,5 +96,37 @@ public class ProfileService {
         }
 
         return new ResultEntity("Y", ErrorCode.BIT_000);
+    }
+
+    public ResultEntity changePass(ChangePassword changePassword){
+        String oPass = g_profileRepository.getPassById(changePassword.getId_seller());
+
+        String oldPass = changePassword.getO_password();
+        String newPass = changePassword.getN_password();
+        String conPass = changePassword.getC_password();
+        Integer id = changePassword.getId_seller();
+
+        if(oPass.equals(oldPass) == false){
+            System.out.println("Old Password: " + oldPass);
+            return new ResultEntity("Old password is wrong", ErrorCode.BIT_999);
+        }
+        else if(newPass.equals(conPass) == false)
+        {
+            System.out.println("New Password: " + newPass);
+            return new ResultEntity("New password did not match", ErrorCode.BIT_999);
+        }
+        else{
+            try{
+                System.out.println("id: "+id);
+                System.out.println("pass: "+newPass);
+                g_profileRepository.updatePassById(id,newPass);
+                return new ResultEntity("Success change password", ErrorCode.BIT_000);
+            }
+            catch (Exception ex){
+                ex.printStackTrace();
+
+                return new ResultEntity("Service undermaintenance", ErrorCode.BIT_999);
+            }
+        }
     }
 }

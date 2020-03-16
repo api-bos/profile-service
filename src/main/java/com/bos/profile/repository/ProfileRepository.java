@@ -17,4 +17,14 @@ public interface ProfileRepository extends JpaRepository<Profile, Integer> {
 
     @Query(value = "SELECT image_path FROM seller WHERE id_seller = :id_seller", nativeQuery = true)
     String getImagePathBySellerId(@Param("id_seller") int id_seller);
+
+    @Query(nativeQuery = true,
+           value = "SELECT password FROM seller WHERE id_seller = :idSeller")
+    String getPassById(@Param("idSeller") Integer idSeller);
+
+    @Transactional
+    @Modifying
+    @Query(nativeQuery = true,
+           value = "UPDATE seller SET password = :password WHERE id_seller = :id_seller")
+    void updatePassById(@Param("id_seller") Integer idSeller, @Param("password") String pass);
 }

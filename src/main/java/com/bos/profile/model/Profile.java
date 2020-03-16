@@ -18,6 +18,7 @@ public class Profile {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id_seller;
     private String username;
+    private String password;
     private String name;
     private String card_number;
     private String phone;

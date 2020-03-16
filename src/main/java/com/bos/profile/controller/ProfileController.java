@@ -1,6 +1,8 @@
 package com.bos.profile.controller;
 
 import bca.bit.proj.library.base.ResultEntity;
+import bca.bit.proj.library.enums.ErrorCode;
+import com.bos.profile.model.ChangePassword;
 import com.bos.profile.model.ProfileDetail;
 import com.bos.profile.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,4 +25,16 @@ public class ProfileController {
         return g_profileService.updateProfile(p_profileDetail);
     }
 
+    @PostMapping(value = "/profile/pass", consumes = "application/json")
+    public ResultEntity changePass(@RequestBody ChangePassword changePassword){
+        try {
+            System.out.println("Try cpass service");
+            return g_profileService.changePass(changePassword);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+            return new ResultEntity(null, ErrorCode.BIT_999);
+        }
+    }
 }
