@@ -1,5 +1,6 @@
 package com.bos.profile.model;
 
+import com.bos.profile.dao.SelectedCourierDao;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,5 +20,5 @@ public class ProfileDetail {
     private String image_path;
     private int id_kab_kota;
     private String base64StringImage;
-    private ArrayList<SelectedCourier> selected_courier;
+    private ArrayList<SelectedCourierDao> selected_courier;
 }
