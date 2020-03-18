@@ -20,7 +20,7 @@ public class ProfileRequest {
     private String phone;
     private String shop_name;
     private String image_path;
-    private Optional<KotaKabupaten> kota_kab;
+    private int id_kota_kab;
     private String base64StringImage;
     private ArrayList<SelectedCourier> selected_courier;
 }

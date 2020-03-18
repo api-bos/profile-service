@@ -70,9 +70,10 @@ public class ProfileService {
     public ResultEntity updateProfile(ProfileRequest p_profileRequest){
         String FULL_PATH = "";
         String tmp_Shopname = p_profileRequest.getShop_name();
-        int tmp_kabKotaId = p_profileRequest.getKota_kab().get().getId_kota_kab();
+        int tmp_kabKotaId = p_profileRequest.getId_kota_kab();
         int l_sellerId = p_profileRequest.getId_seller();
 
+        //Delete image if exist
         String tmp_unusedImagePath = g_profileRepository.getImagePathBySellerId(p_profileRequest.getId_seller());
         File tmp_file = new File(tmp_unusedImagePath);
         if (tmp_file.exists()){
@@ -83,8 +84,13 @@ public class ProfileService {
             }
         }
 
-        if (!FULL_PATH.equals("failed")){
+        //Check image request
+        if (!p_profileRequest.getBase64StringImage().equals("")){
             FULL_PATH = saveImage(p_profileRequest);
+        }
+
+        //Update profile data
+        if (!FULL_PATH.equals("failed") || !FULL_PATH.equals("")){
             g_profileRepository.updateProfileById(tmp_Shopname, tmp_kabKotaId, FULL_PATH, l_sellerId);
         }else{
             g_profileRepository.updateProfileById(tmp_Shopname, tmp_kabKotaId, "", l_sellerId);
