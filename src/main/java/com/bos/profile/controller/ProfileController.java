@@ -3,7 +3,7 @@ package com.bos.profile.controller;
 import bca.bit.proj.library.base.ResultEntity;
 import bca.bit.proj.library.enums.ErrorCode;
 import com.bos.profile.model.ChangePassword;
-import com.bos.profile.model.ProfileDetail;
+import com.bos.profile.model.ProfileRequest;
 import com.bos.profile.service.ProfileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -21,8 +21,8 @@ public class ProfileController {
     }
 
     @PutMapping(value = "/profile", consumes = "application/json")
-    public ResultEntity updateProfile(@RequestBody ProfileDetail p_profileDetail){
-        return g_profileService.updateProfile(p_profileDetail);
+    public ResultEntity updateProfile(@RequestBody ProfileRequest p_profileRequest){
+        return g_profileService.updateProfile(p_profileRequest);
     }
 
     @PostMapping(value = "/profile/pass", consumes = "application/json")

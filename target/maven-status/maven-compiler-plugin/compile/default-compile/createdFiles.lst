@@ -1,10 +1,13 @@
 com\bos\profile\service\ProfileService.class
-com\bos\profile\model\SelectedCourier.class
 com\bos\profile\model\Profile.class
+com\bos\profile\model\ProfileRequest.class
+com\bos\profile\model\ProfileResponse.class
 com\bos\profile\ProfileApplication.class
 com\bos\profile\model\ChangePassword.class
-com\bos\profile\model\ProfileDetail.class
+com\bos\profile\repository\KotaKabupatenRepository.class
 com\bos\profile\repository\ProfileRepository.class
+com\bos\profile\model\KotaKabupaten.class
+com\bos\profile\model\SelectedCourier.class
 com\bos\profile\repository\SelectedCourierRepository.class
 com\bos\profile\controller\ProfileController.class
 com\bos\profile\dao\SelectedCourierDao.class
