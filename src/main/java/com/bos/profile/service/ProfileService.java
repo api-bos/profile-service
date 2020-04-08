@@ -26,9 +26,8 @@ public class ProfileService {
     KotaKabupatenRepository g_kotaKabupatenRepository;
 
     private String saveImage(ProfileRequest p_profileRequest){
-        String tmp_uploadLocation = "C:\\Users\\U067726\\Pictures\\BOS\\Profile";
         String tmp_fileName = p_profileRequest.getId_seller() + ".jpg";
-        String tmp_fullPath = tmp_uploadLocation + File.separator + tmp_fileName;
+        String tmp_fullPath = "\\bos\\" + tmp_fileName;
 
         try(FileOutputStream tmp_imageOutFile = new FileOutputStream(tmp_fullPath)){
             byte[] tmp_imageByteArray = Base64.getDecoder().decode(p_profileRequest.getBase64StringImage());
