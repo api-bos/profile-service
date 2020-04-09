@@ -10,6 +10,7 @@ import com.bos.profile.repository.KotaKabupatenRepository;
 import com.bos.profile.repository.ProfileRepository;
 import com.bos.profile.repository.SelectedCourierRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -115,7 +116,7 @@ public class ProfileService {
         String conPass = changePassword.getC_password();
         Integer id = changePassword.getId_seller();
 
-        if(oPass.equals(oldPass) == false){
+        if(!new BCryptPasswordEncoder().matches(oldPass, oPass)){
             System.out.println("Old Password: " + oldPass);
             return new ResultEntity("Old password is wrong", ErrorCode.BIT_999);
         }
@@ -128,7 +129,7 @@ public class ProfileService {
             try{
                 System.out.println("id: "+id);
                 System.out.println("pass: "+newPass);
-                g_profileRepository.updatePassById(id,newPass);
+                g_profileRepository.updatePassById(id, new BCryptPasswordEncoder().encode(newPass));
                 return new ResultEntity("Success change password", ErrorCode.BIT_000);
             }
             catch (Exception ex){

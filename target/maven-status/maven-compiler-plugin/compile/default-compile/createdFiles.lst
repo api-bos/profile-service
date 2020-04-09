@@ -7,6 +7,7 @@ com\bos\profile\model\ChangePassword.class
 com\bos\profile\repository\KotaKabupatenRepository.class
 com\bos\profile\repository\ProfileRepository.class
 com\bos\profile\model\KotaKabupaten.class
+com\bos\profile\config\SecurityConfig.class
 com\bos\profile\model\SelectedCourier.class
 com\bos\profile\repository\SelectedCourierRepository.class
 com\bos\profile\controller\ProfileController.class
