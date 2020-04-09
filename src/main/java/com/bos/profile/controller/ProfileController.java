@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "/bos", produces = "application/json")
-@CrossOrigin(origins = {"*"})
 public class ProfileController {
     @Autowired
     ProfileService g_profileService;
