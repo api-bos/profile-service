@@ -13,8 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileOutputStream;
+import java.io.*;
 import java.util.Base64;
 
 @Service
@@ -28,7 +27,7 @@ public class ProfileService {
 
     private String saveImage(ProfileRequest p_profileRequest){
         String tmp_fileName = p_profileRequest.getId_seller() + ".jpg";
-        String tmp_fullPath = "\\bos\\" + tmp_fileName;
+        String tmp_fullPath = "\\NASBOS\\" + tmp_fileName;
 
         try(FileOutputStream tmp_imageOutFile = new FileOutputStream(tmp_fullPath)){
             byte[] tmp_imageByteArray = Base64.getDecoder().decode(p_profileRequest.getBase64StringImage());
@@ -54,7 +53,7 @@ public class ProfileService {
             tmp_profileResponse.setCard_number(tmp_profile.getCard_number());
             tmp_profileResponse.setPhone(tmp_profile.getPhone());
             tmp_profileResponse.setShop_name(tmp_profile.getShop_name());
-            tmp_profileResponse.setImage_path(tmp_profile.getImage_path());
+            tmp_profileResponse.setBase64StringImage(encoder(tmp_profile.getImage_path()));
             tmp_profileResponse.setKota_kab(g_kotaKabupatenRepository.findById(tmp_profile.getId_kab_kota()));
             tmp_profileResponse.setSelected_courier(g_selectedCourierRepository.getSelectedCourier(id_seller));
 
@@ -137,6 +136,28 @@ public class ProfileService {
 
                 return new ResultEntity("Service undermaintenance", ErrorCode.BIT_999);
             }
+        }
+    }
+
+    public String encoder(String p_imagePath) {
+        String tmp_base64Image = "";
+        System.out.println(p_imagePath.substring(8));
+        String imagePath = "\\NASBOS\\" + p_imagePath.substring(8);
+        File tmp_file = new File(imagePath);
+        try (FileInputStream tmp_imageInFile = new FileInputStream(tmp_file)) {
+            // Reading a Image file from file system
+            byte tmp_imageData[] = new byte[(int) tmp_file.length()];
+            tmp_imageInFile.read(tmp_imageData);
+            tmp_base64Image = Base64.getEncoder().encodeToString(tmp_imageData);
+            return tmp_base64Image;
+
+        } catch (FileNotFoundException e) {
+            System.out.println("Image not found" + e);
+            return "";
+
+        } catch (IOException ioe) {
+            System.out.println("Exception while reading the Image " + ioe);
+            return "";
         }
     }
 }
