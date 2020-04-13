@@ -142,7 +142,14 @@ public class ProfileService {
     public String encoder(String p_imagePath) {
         String tmp_base64Image = "";
         System.out.println(p_imagePath.substring(8));
-        String imagePath = "\\NASBOS\\" + p_imagePath.substring(8);
+        String imagePath = "";
+
+        try {
+            imagePath = "\\NASBOS\\" + p_imagePath.substring(8);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
         File tmp_file = new File(imagePath);
         try (FileInputStream tmp_imageInFile = new FileInputStream(tmp_file)) {
             // Reading a Image file from file system
