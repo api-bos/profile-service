@@ -16,6 +16,7 @@ public class ProfileResponse {
     private String username;
     private String name;
     private String card_number;
+    private String email;
     private String phone;
     private String shop_name;
     private String image_path;

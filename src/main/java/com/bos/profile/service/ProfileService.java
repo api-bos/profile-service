@@ -51,6 +51,7 @@ public class ProfileService {
             tmp_profileResponse.setUsername(tmp_profile.getUsername());
             tmp_profileResponse.setName(tmp_profile.getName());
             tmp_profileResponse.setCard_number(tmp_profile.getCard_number());
+            tmp_profileResponse.setEmail(tmp_profile.getEmail());
             tmp_profileResponse.setPhone(tmp_profile.getPhone());
             tmp_profileResponse.setShop_name(tmp_profile.getShop_name());
             tmp_profileResponse.setBase64StringImage(encoder(tmp_profile.getImage_path()));
