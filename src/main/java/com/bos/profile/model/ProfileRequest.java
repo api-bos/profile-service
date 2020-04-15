@@ -15,7 +15,7 @@ public class ProfileRequest {
     private int id_seller;
     private String username;
     private String name;
-    private String card_number;
+    private String account_no;
     private String phone;
     private String shop_name;
     private String image_path;

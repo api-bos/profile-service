@@ -50,7 +50,7 @@ public class ProfileService {
             tmp_profileResponse.setId_seller(id_seller);
             tmp_profileResponse.setUsername(tmp_profile.getUsername());
             tmp_profileResponse.setName(tmp_profile.getName());
-            tmp_profileResponse.setCard_number(tmp_profile.getCard_number());
+            tmp_profileResponse.setAccount_no(tmp_profile.getAccount_no());
             tmp_profileResponse.setEmail(tmp_profile.getEmail());
             tmp_profileResponse.setPhone(tmp_profile.getPhone());
             tmp_profileResponse.setShop_name(tmp_profile.getShop_name());
@@ -141,7 +141,7 @@ public class ProfileService {
     }
 
     public String encoder(String p_imagePath) {
-        String tmp_base64Image = "";
+        String tmp_base64Image;
         System.out.println(p_imagePath.substring(8));
         String imagePath = "";
 

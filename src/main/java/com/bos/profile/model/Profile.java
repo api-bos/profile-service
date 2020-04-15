@@ -20,7 +20,7 @@ public class Profile {
     private String username;
     private String password;
     private String name;
-    private String card_number;
+    private String account_no;
     private String email;
     private String phone;
     private String shop_name;

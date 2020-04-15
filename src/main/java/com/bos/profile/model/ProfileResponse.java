@@ -15,7 +15,7 @@ public class ProfileResponse {
     private int id_seller;
     private String username;
     private String name;
-    private String card_number;
+    private String account_no;
     private String email;
     private String phone;
     private String shop_name;
